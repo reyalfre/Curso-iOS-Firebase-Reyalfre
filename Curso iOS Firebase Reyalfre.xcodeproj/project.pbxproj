@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F9A4D8D42F558F4E00D0F73E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F9A4D8D32F558F4E00D0F73E /* FirebaseAuth */; };
+		F9A4D8D62F558F4E00D0F73E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F9A4D8D52F558F4E00D0F73E /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F9A4D8BD2F558AC700D0F73E /* Curso iOS Firebase Reyalfre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Curso iOS Firebase Reyalfre.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9A4D8D42F558F4E00D0F73E /* FirebaseAuth in Frameworks */,
+				F9A4D8D62F558F4E00D0F73E /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +72,8 @@
 			);
 			name = "Curso iOS Firebase Reyalfre";
 			packageProductDependencies = (
+				F9A4D8D32F558F4E00D0F73E /* FirebaseAuth */,
+				F9A4D8D52F558F4E00D0F73E /* FirebaseFirestore */,
 			);
 			productName = "Curso iOS Firebase Reyalfre";
 			productReference = F9A4D8BD2F558AC700D0F73E /* Curso iOS Firebase Reyalfre.app */;
@@ -94,6 +103,9 @@
 			);
 			mainGroup = F9A4D8B42F558AC700D0F73E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F9A4D8D22F558F4E00D0F73E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F9A4D8BE2F558AC700D0F73E /* Products */;
 			projectDirPath = "";
@@ -258,6 +270,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -289,6 +302,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +342,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F9A4D8D22F558F4E00D0F73E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F9A4D8D32F558F4E00D0F73E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9A4D8D22F558F4E00D0F73E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		F9A4D8D52F558F4E00D0F73E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9A4D8D22F558F4E00D0F73E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F9A4D8B52F558AC700D0F73E /* Project object */;
 }
