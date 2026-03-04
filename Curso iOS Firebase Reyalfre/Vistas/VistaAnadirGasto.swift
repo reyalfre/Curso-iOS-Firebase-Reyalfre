@@ -12,6 +12,7 @@ struct VistaAnadirGasto: View {
     var viewModel: any GastosViewModelProtocol
     @State private var titulo = ""
     @State private var importe: Double = 0.0
+    @State private var categoria: CategoriaGastos = .sinCategoria
     var body: some View {
         NavigationStack {
             Form {
@@ -19,6 +20,13 @@ struct VistaAnadirGasto: View {
 
                 TextField("Importe", value: $importe, format: .number)
                     .keyboardType(.decimalPad)
+                
+                Picker("Categoria", selection: $categoria){
+                    ForEach(CategoriaGastos.allCases, id: \.self) {
+                        categoria in
+                        Label(categoria.rawValue, systemImage: categoria.nombreIcono).tag(categoria)
+                    }
+                }
             }
             .navigationTitle("Nuevo gasto")
             .toolbar {
@@ -29,7 +37,7 @@ struct VistaAnadirGasto: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Guardar") {
-                        viewModel.anadirGasto(titulo: titulo, importe: importe)
+                        viewModel.anadirGasto(titulo: titulo, importe: importe, categoria: categoria)
                         dismiss()
                     }
                     .disabled(titulo.isEmpty || importe == 0)

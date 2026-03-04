@@ -5,15 +5,17 @@
 //  Created by Equipo 8 on 2/3/26.
 //
 
-import SwiftUI
 import FirebaseAuth
+import SwiftUI
+
 struct ContentView: View {
     @State private var manager = AuthManager()
     var body: some View {
         Group {
-            if let user = manager.user {
-              //  VistaPrincipal(authManager: manager)
-                VistaGastos(idUsuario: user.uid)
+            if manager.user != nil {
+                //  VistaPrincipal(authManager: manager)
+                //   VistaGastos(idUsuario: user.uid)
+                VistaGastos(authManager: manager)
             } else {
                 VistaLogin(authManager: manager)
             }

@@ -16,13 +16,16 @@ enum ConstantesFirestore {
 // TODO: temporal
 protocol GastosViewModelProtocol: Observable {
     var gastos: [Gasto] { get set }
+    var importeTotal: Double { get set }
     func escucharDatos()
-    func anadirGasto(titulo: String, importe: Double)
+    func anadirGasto(titulo: String, importe: Double, categoria: CategoriaGastos)
+    func borrarGasto(indices: IndexSet)
 }
 
 @Observable
 class GastosViewModel: GastosViewModelProtocol {
     var gastos: [Gasto] = []
+    var importeTotal: Double = 0.0
 
     private var db = Firestore.firestore()
     private var idUsuario: String
@@ -48,18 +51,21 @@ class GastosViewModel: GastosViewModelProtocol {
                     )
                     return
                 }
-                self.gastos = documents.compactMap({
+                self.gastos = documents.compactMap {
                     doc -> Gasto? in
                     try? doc.data(as: Gasto.self)
-                })
+                }
+                // $0 contiene el acumulado hasta el momento, $1. importe el importe de un gasto
+                self.importeTotal = self.gastos.reduce(0) { $0 + $1.importe }
             }
 
     }
-    func anadirGasto(titulo: String, importe: Double) {
+    func anadirGasto(titulo: String, importe: Double, categoria: CategoriaGastos) {
         let nuevoGasto = Gasto(
             titulo: titulo,
             importe: importe,
             fecha: Date(),
+            categoria: categoria,
             idUsuario: idUsuario
         )
         do {
@@ -68,6 +74,22 @@ class GastosViewModel: GastosViewModelProtocol {
             )
         } catch {
             print("Error guardando: \(error)")
+        }
+    }
+    func borrarGasto(indices: IndexSet) {
+        indices.forEach {
+            indice in
+            let gasto = gastos[indice]
+
+            guard let idGasto = gasto.id else { return }
+
+            db.collection(ConstantesFirestore.coleccionGastos).document(idGasto)
+                .delete {
+                    error in
+                    if let error {
+                        print("Error al borrar: \(error.localizedDescription)")
+                    }
+                }
         }
     }
 }
