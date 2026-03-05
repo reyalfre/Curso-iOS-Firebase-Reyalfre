@@ -14,11 +14,11 @@ struct Gasto: Identifiable, Codable {
     var importe: Double
     var fecha: Date
     
-    var categoria: CategoriaGastos = .sinCategoria
+    var idCategoria: String
     
     var idUsuario: String
     
     enum CodingKeys: String, CodingKey{
-        case id, titulo, importe, fecha, idUsuario, categoria
+        case id, titulo, importe, fecha, idUsuario, idCategoria
     }
 }
